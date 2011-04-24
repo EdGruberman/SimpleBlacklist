@@ -1,0 +1,5 @@
+name: SimpleBlacklist
+description: Prevent specific items from being used unless authorized.
+version: %VERSION%
+author: EdGruberman (ed@rjump.com)
+main: edgruberman.bukkit.simpleblacklist.Main

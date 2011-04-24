@@ -1,0 +1,23 @@
+logLevel: ALL
+sendLevel: ALL
+blacklist:
+    TNT:
+        id: 46
+        message: You are not allowed to place or use TNT.
+    Flint and Steel:
+        id: 259
+        message: You are not allowed to use Flint and Steel.
+    Buckets:
+        id: 325
+        message: You are not allowed to use Buckets.
+    Water Buckets:
+        id: 326
+        message: You are not allowed to use Water Buckets.
+    Lava buckets:
+        id: 327
+        message: You are not allowed to use Lava buckets.
+allow:
+    - [Players]
+groups:
+    Players:
+        - EdGruberman
