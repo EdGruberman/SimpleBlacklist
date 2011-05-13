@@ -1,5 +1,6 @@
-logLevel: ALL
-sendLevel: ALL
+level:
+    log: ALL
+    send: ALL
 blacklist:
     TNT:
         id: 46

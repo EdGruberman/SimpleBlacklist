@@ -4,7 +4,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import edgruberman.bukkit.simpleblacklist.MessageManager.MessageLevel;
+import edgruberman.bukkit.messagemanager.MessageLevel;
 
 public class PlayerListener extends org.bukkit.event.player.PlayerListener {
     

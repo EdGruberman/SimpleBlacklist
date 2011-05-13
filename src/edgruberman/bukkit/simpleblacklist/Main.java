@@ -10,14 +10,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 
-import edgruberman.bukkit.simpleblacklist.MessageManager.MessageLevel;
+import edgruberman.bukkit.messagemanager.MessageLevel;
+import edgruberman.bukkit.messagemanager.MessageManager;
 
 public class Main extends org.bukkit.plugin.java.JavaPlugin {
     
-    private final String DEFAULT_LOG_LEVEL       = "RIGHTS";
-    private final String DEFAULT_SEND_LEVEL      = "RIGHTS";
-
-    public static MessageManager messageManager = null;
+    public static MessageManager messageManager;
     public static GroupManager groupManager = null;
     
     public Map<Integer, String> blacklist = new HashMap<Integer, String>();
@@ -27,15 +25,14 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
     
     private Map<String, List<String>> groupsConfig = new HashMap<String, List<String>>();
     
+    public void onLoad() {
+        Configuration.load(this);
+    }
+    
     public void onEnable() {
         Main.messageManager = new MessageManager(this);
         Main.messageManager.log("Version " + this.getDescription().getVersion());
-        
-        Configuration.load(this);
-        
-        Main.messageManager.setLogLevel(MessageLevel.parse(      this.getConfiguration().getString("logLevel",       this.DEFAULT_LOG_LEVEL)));
-        Main.messageManager.setSendLevel(MessageLevel.parse(     this.getConfiguration().getString("sendLevel",      this.DEFAULT_SEND_LEVEL)));
-        
+               
         Main.groupManager = new GroupManager(this);
         this.loadGroups();
         

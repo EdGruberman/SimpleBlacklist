@@ -2,7 +2,7 @@ package edgruberman.bukkit.simpleblacklist;
 
 import org.bukkit.event.block.BlockPlaceEvent;
 
-import edgruberman.bukkit.simpleblacklist.MessageManager.MessageLevel;
+import edgruberman.bukkit.messagemanager.MessageLevel;
 
 public class BlockListener extends org.bukkit.event.block.BlockListener {
     
