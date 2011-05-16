@@ -18,7 +18,4 @@ blacklist:
         id: 327
         message: You are not allowed to use Lava buckets.
 allow:
-    - [Players]
-groups:
-    Players:
-        - EdGruberman
+    - [Pyros]

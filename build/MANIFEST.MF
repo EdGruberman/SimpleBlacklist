@@ -4,7 +4,7 @@ Created-By: 19.1-b02 (Sun Microsystems Inc.)
 
 Name: edgruberman/bukkit/simpleblacklist/
 Specification-Title: SimpleBlacklist
-Specification-Version: 1.1
+Specification-Version: 1.2
 Specification-Vendor: EdGruberman (ed@rjump.com)
 Implementation-Title: edgruberman.bukkit.simpleblacklist
 Implementation-Version: 0b1

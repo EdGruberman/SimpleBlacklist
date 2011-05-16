@@ -10,20 +10,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 
-import edgruberman.bukkit.messagemanager.MessageLevel;
 import edgruberman.bukkit.messagemanager.MessageManager;
 
 public class Main extends org.bukkit.plugin.java.JavaPlugin {
     
     public static MessageManager messageManager;
-    public static GroupManager groupManager = null;
     
     public Map<Integer, String> blacklist = new HashMap<Integer, String>();
     
     private List<String> allowed = new ArrayList<String>();
     private List<String> allowedOnline = new ArrayList<String>();
-    
-    private Map<String, List<String>> groupsConfig = new HashMap<String, List<String>>();
     
     public void onLoad() {
         Configuration.load(this);
@@ -32,9 +28,6 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
     public void onEnable() {
         Main.messageManager = new MessageManager(this);
         Main.messageManager.log("Version " + this.getDescription().getVersion());
-               
-        Main.groupManager = new GroupManager(this);
-        this.loadGroups();
         
         this.loadBlacklist();
         this.loadAllowed();
@@ -47,8 +40,6 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
     public void onDisable() {
         //TODO Unregister listeners when Bukkit supports it.
         
-        Main.groupManager = null;
-        
         Main.messageManager.log("Plugin Disabled");
         Main.messageManager = null;
     }
@@ -57,8 +48,8 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
         PluginManager pluginManager = this.getServer().getPluginManager();
         
         PlayerListener playerListener = new PlayerListener(this);
-        pluginManager.registerEvent(Event.Type.PLAYER_JOIN    , playerListener, Event.Priority.Monitor, this);
-        pluginManager.registerEvent(Event.Type.PLAYER_QUIT    , playerListener, Event.Priority.Monitor, this);
+        pluginManager.registerEvent(Event.Type.PLAYER_JOIN, playerListener, Event.Priority.Monitor, this);
+        pluginManager.registerEvent(Event.Type.PLAYER_QUIT, playerListener, Event.Priority.Monitor, this);
         
         pluginManager.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Event.Priority.Normal , this);
 
@@ -83,7 +74,7 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
         for (String member : this.getConfiguration().getStringList("allow", null)) {
             if (member.startsWith("[") && member.endsWith("]")) {
                 // Expand group name
-                allowed.addAll(Main.groupManager.getMembers(member.substring(1, member.length() - 1)));
+                allowed.addAll(GroupManager.getMembers(member.substring(1, member.length() - 1)));
             } else {
                 // Direct player name
                 allowed.add(member);
@@ -123,21 +114,5 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
     
     public void removeOnlinePlayer(Player player) {
         this.allowedOnline.remove(player.getName());
-    }
-    
-    // TODO Overhaul group management
-    private void loadGroups() {
-        Map<String, List<String>> groups = new HashMap<String, List<String>>();
-        List<String> members = new ArrayList<String>();
-        for (String player : this.getConfiguration().getStringList("groups.Players", null)) {
-            members.add(player);
-        }
-        groups.put("Players", members);
-        this.groupsConfig = groups;
-        Main.messageManager.log(MessageLevel.FINE, "[Players]=" + this.groupsGetMembers("Players"));
-    }
-    
-    public List<String> groupsGetMembers(String group) {
-        return this.groupsConfig.get(group);
     }
 }
