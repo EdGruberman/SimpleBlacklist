@@ -1,21 +1,24 @@
 level:
-    log: ALL
-    send: ALL
+    log: INFO
+    send: RIGHTS
 blacklist:
-    TNT:
-        id: 46
+    '46':
         message: You are not allowed to place or use TNT.
-    Flint and Steel:
-        id: 259
+        allow:
+            - [Certified]
+    '259':
         message: You are not allowed to use Flint and Steel.
-    Buckets:
-        id: 325
+        allow:
+            - [Certified]
+    '325':
         message: You are not allowed to use Buckets.
-    Water Buckets:
-        id: 326
+        allow:
+            - [Certified]
+    '326':
         message: You are not allowed to use Water Buckets.
-    Lava buckets:
-        id: 327
+        allow:
+            - [Certified]
+    '327':
         message: You are not allowed to use Lava buckets.
-allow:
-    - [Pyros]
+        allow:
+            - [Certified]

@@ -6,19 +6,13 @@ import edgruberman.bukkit.messagemanager.MessageLevel;
 
 public class BlockListener extends org.bukkit.event.block.BlockListener {
     
-    private Main main;
-    
-    public BlockListener(Main main) {
-        this.main = main;
-    }
-    
     @Override
     public void onBlockPlace(BlockPlaceEvent event) {
         if (event.isCancelled()) return;
         
-        if (this.main.isAllowed(event.getPlayer(), event.getBlock().getType())) return;
+        if (Main.isAllowed(event.getPlayer(), event.getBlock().getType())) return;
         
-        String message = this.main.blacklist.get(event.getBlock().getTypeId());
+        String message = Main.getMessage(event.getBlock().getTypeId());
         if (message.length() != 0)
             Main.messageManager.send(event.getPlayer(), MessageLevel.RIGHTS, message);
         

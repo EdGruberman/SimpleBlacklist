@@ -1,7 +1,7 @@
 name: SimpleBlacklist
 description: Prevent specific items from being used unless authorized.
 version: %VERSION%
-depend: [MessageManager, SimpleGroups]
+depend: [MessageManager, SimpleSecurity]
 main: edgruberman.bukkit.simpleblacklist.Main
 author: EdGruberman (ed@rjump.com)
 
