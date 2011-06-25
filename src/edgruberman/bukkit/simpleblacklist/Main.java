@@ -9,21 +9,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 
+import edgruberman.bukkit.messagemanager.MessageLevel;
 import edgruberman.bukkit.messagemanager.MessageManager;
 
 public class Main extends org.bukkit.plugin.java.JavaPlugin {
     
-    protected static ConfigurationManager configurationManager;
-    protected static MessageManager messageManager;
+    private static ConfigurationManager configurationManager;
+    private static MessageManager messageManager;
     
     private static Map<Integer, BlacklistEntry> blacklist = new HashMap<Integer, BlacklistEntry>();
     
     public void onLoad() {
         Main.configurationManager = new ConfigurationManager(this);
-        Main.configurationManager.load();
+        Main.getConfigurationManager().load();
         
         Main.messageManager = new MessageManager(this);
-        Main.messageManager.log("Version " + this.getDescription().getVersion());
+        Main.getMessageManager().log("Version " + this.getDescription().getVersion());
     }
     
     public void onEnable() {
@@ -31,18 +32,21 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
         
         this.registerEvents();
 
-        Main.messageManager.log("Plugin Enabled");
+        Main.getMessageManager().log("Plugin Enabled");
     }
     
     public void onDisable() {
-        Main.messageManager.log("Plugin Disabled");
-        Main.messageManager = null;
+        Main.getMessageManager().log("Plugin Disabled");
     }
     
     private void registerEvents() {
         PluginManager pluginManager = this.getServer().getPluginManager();
         
-        pluginManager.registerEvent(Event.Type.PLAYER_INTERACT, new PlayerListener(), Event.Priority.Normal, this);
+        PlayerListener playerListener = new PlayerListener();
+        pluginManager.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Event.Priority.Normal, this);
+        pluginManager.registerEvent(Event.Type.PLAYER_INTERACT_ENTITY, playerListener, Event.Priority.Normal, this);
+        pluginManager.registerEvent(Event.Type.PLAYER_BUCKET_FILL, playerListener, Event.Priority.Normal, this);
+        pluginManager.registerEvent(Event.Type.PLAYER_BUCKET_EMPTY, playerListener, Event.Priority.Normal, this);
         
         pluginManager.registerEvent(Event.Type.BLOCK_PLACE, new BlockListener(), Event.Priority.Normal, this);
     }
@@ -66,7 +70,22 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
         return false;
     }
     
-    protected static String getMessage(int id) {
-        return Main.blacklist.get(id).getMessage();
+    protected static void notify(Player player, Material material) {
+        Main.getMessageManager().log(MessageLevel.RIGHTS, player.getName()
+                + " attempted to use blacklisted "
+                + material.toString()
+        );
+        
+        String message = Main.blacklist.get(material.getId()).getMessage();
+        if (message.length() != 0)
+            Main.getMessageManager().send(player, MessageLevel.RIGHTS, message);
+    }
+    
+    protected static ConfigurationManager getConfigurationManager() {
+        return Main.configurationManager;
+    }
+    
+    protected static MessageManager getMessageManager() {
+        return Main.messageManager;
     }
 }
