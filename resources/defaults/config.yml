@@ -1,6 +1,3 @@
-level:
-    log: INFO
-    send: RIGHTS
 blacklist:
     '46':
         message: You are not allowed to place or use TNT.

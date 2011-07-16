@@ -1,8 +1,14 @@
 package edgruberman.bukkit.simpleblacklist;
 
+import org.bukkit.event.Event;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.plugin.Plugin;
 
 public class BlockListener extends org.bukkit.event.block.BlockListener {
+    
+    BlockListener(Plugin plugin) {
+        plugin.getServer().getPluginManager().registerEvent(Event.Type.BLOCK_PLACE, this, Event.Priority.Normal, plugin);
+    }
     
     @Override
     public void onBlockPlace(BlockPlaceEvent event) {
