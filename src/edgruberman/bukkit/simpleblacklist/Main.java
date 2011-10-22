@@ -38,11 +38,12 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
         Main.messageManager.log("Plugin Disabled");
     }
     
+    @SuppressWarnings("unchecked")
     private void loadBlacklist() {
-        for (String id : this.getConfiguration().getNodes("blacklist").keySet()) {
-            String message = this.getConfiguration().getString("blacklist." + id + ".message", null);
-            List<String> access = this.getConfiguration().getStringList("blacklist." + id + ".allow", null);
-            blacklist.put(Integer.parseInt(id), new BlacklistEntry(Integer.parseInt(id), message, access));
+        for (String id : Main.configurationFile.getConfig().getConfigurationSection("blacklist").getKeys(false)) {
+            String message = Main.configurationFile.getConfig().getString("blacklist." + id + ".message", null);
+            List<String> access = Main.configurationFile.getConfig().getList("blacklist." + id + ".allow", null);
+            Main.blacklist.put(Integer.parseInt(id), new BlacklistEntry(Integer.parseInt(id), message, access));
         }
     }
     
