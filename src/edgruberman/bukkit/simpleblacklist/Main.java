@@ -1,5 +1,6 @@
 package edgruberman.bukkit.simpleblacklist;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,8 @@ public class Main extends org.bukkit.plugin.java.JavaPlugin {
     private void loadBlacklist() {
         for (String id : Main.configurationFile.getConfig().getConfigurationSection("blacklist").getKeys(false)) {
             String message = Main.configurationFile.getConfig().getString("blacklist." + id + ".message", null);
-            List<String> access = Main.configurationFile.getConfig().getList("blacklist." + id + ".allow", null);
+            List<String> access = new ArrayList<String>();
+            access.addAll(Main.configurationFile.getConfig().getStringList("blacklist." + id + ".allow"));
             Main.blacklist.put(Integer.parseInt(id), new BlacklistEntry(Integer.parseInt(id), message, access));
         }
     }
