@@ -1,21 +1,9 @@
+denied: 'You have not been approved to use %1$s' # 1 = Item Name
 blacklist:
-    '46':
-        message: You are not allowed to place or use TNT.
-        allow:
-            - [Certified]
-    '259':
-        message: You are not allowed to use Flint and Steel.
-        allow:
-            - [Certified]
-    '325':
-        message: You are not allowed to use Buckets.
-        allow:
-            - [Certified]
-    '326':
-        message: You are not allowed to use Water Buckets.
-        allow:
-            - [Certified]
-    '327':
-        message: You are not allowed to use Lava buckets.
-        allow:
-            - [Certified]
+    TNT: TNT
+    FLINT_AND_STEEL: Flint and Steel
+    BUCKET: Buckets
+    WATER_BUCKET: Water Buckets
+    LAVA_BUCKET: Lava Buckets
+logLevel: RIGHTS
+version: @VERSION@

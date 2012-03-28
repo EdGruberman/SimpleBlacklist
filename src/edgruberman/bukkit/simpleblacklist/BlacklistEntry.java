@@ -1,32 +1,31 @@
 package edgruberman.bukkit.simpleblacklist;
 
-import java.util.List;
-
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
-import edgruberman.bukkit.accesscontrol.SimpleAccess;
-
+/**
+ * Material class wrapper defining access.
+ */
 public class BlacklistEntry {
-    
-    private int id;
-    private String message;
-    private SimpleAccess access;
-    
-    protected BlacklistEntry(int id, String message, List<String> access) {
-        this.id = id;
-        this.message = message;
-        this.access = new SimpleAccess(access);
+
+    private final Material material;
+    private final String description;
+
+    protected BlacklistEntry(final Material material, final String description) {
+        this.material = material;
+        this.description = description;
     }
-    
-    protected int getId() {
-        return this.id;
+
+    protected Material getMaterial() {
+        return this.material;
     }
-    
-    protected String getMessage() {
-        return this.message;
+
+    protected String getDescription() {
+        return this.description;
     }
-    
-    protected boolean isAllowed(Player player) {
-        return this.access.isAllowed(player);
+
+    protected boolean isAllowed(final Player player) {
+        return player.hasPermission(String.format(Main.PERMISSION, this.material.name()));
     }
+
 }
