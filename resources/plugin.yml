@@ -1,7 +1,11 @@
 name: @NAME@
-description: Prevent specific items from being used unless authorized.
+description: Prevent specific items from being used
 depend: [MessageManager]
 version: @VERSION@
 author: @AUTHOR@
 main: @MAIN@
+permissions:
+    simpleblacklist.all:
+        description: Can use all blacklisted materials
+        default: op
 

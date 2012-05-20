@@ -25,7 +25,7 @@ public class BlacklistEntry {
     }
 
     protected boolean isAllowed(final Player player) {
-        return player.hasPermission(String.format(Main.PERMISSION, this.material.name()));
+        return player.hasPermission(String.format(Main.PERMISSION_MATERIAL, this.material.name())) || player.hasPermission(Main.PERMISSION_ALL);
     }
 
 }

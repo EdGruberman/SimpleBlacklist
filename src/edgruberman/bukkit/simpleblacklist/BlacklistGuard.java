@@ -40,7 +40,7 @@ final class BlacklistGuard implements Listener {
     }
 
     private void notify(final Player player, final Material material, final Location location) {
-        this.plugin.getLogger().log(MessageLevel.RIGHTS, player.getName() + " attempted to use blacklisted " + material.toString()
+        this.plugin.getLogger().fine(player.getName() + " attempted to use blacklisted " + material.toString()
                 + " at x:" + location.getBlockX() + " y:" + location.getBlockY() + " z:" + location.getBlockZ());
 
         if (this.denied == null) return;
@@ -48,7 +48,7 @@ final class BlacklistGuard implements Listener {
         final String message = String.format(this.denied, this.blacklist.get(material.getId()).getDescription());
         if (message.length() == 0) return;
 
-        MessageManager.of(this.plugin).send(player, message, MessageLevel.RIGHTS);
+        MessageManager.of(this.plugin).tell(player, message, MessageLevel.RIGHTS, false);
     }
 
     @EventHandler(ignoreCancelled = true)

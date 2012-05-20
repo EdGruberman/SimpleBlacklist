@@ -5,5 +5,5 @@ blacklist:
     BUCKET: Buckets
     WATER_BUCKET: Water Buckets
     LAVA_BUCKET: Lava Buckets
-logLevel: RIGHTS
+logLevel: FINE
 version: @VERSION@
