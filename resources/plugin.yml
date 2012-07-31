@@ -1,11 +1,18 @@
 name: @NAME@
 description: Prevent specific items from being used
-depend: [MessageManager]
+softdepend: [MessageManager]
 version: @VERSION@
 author: @AUTHOR@
 main: @MAIN@
+commands:
+    'simpleblacklist:reload':
+        description: Reload plugin
+        permission: simpleblacklist.reload
 permissions:
-    simpleblacklist.all:
+    simpleblacklist.material.all:
         description: Can use all blacklisted materials
+        default: op
+    simpleblacklist.reload:
+        description: Can use reload command
         default: op
 

@@ -1,9 +1,11 @@
-denied: 'You have not been approved to use %1$s' # 1 = Item Name
+logLevel: INFO
+denied: '-> You are §cnot approved§r to use §o%1$s' # 1 = Item
+reload: '-> %2$s plugin §areloaded' # 2 = Plugin
 blacklist:
     TNT: TNT
     FLINT_AND_STEEL: Flint and Steel
     BUCKET: Buckets
     WATER_BUCKET: Water Buckets
     LAVA_BUCKET: Lava Buckets
-logLevel: FINE
+    FIREBALL: Fire Charges
 version: @VERSION@
