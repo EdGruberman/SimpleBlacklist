@@ -1,6 +1,6 @@
 name: @NAME@
 description: Prevent specific items from being used
-softdepend: [MessageManager]
+softdepend: [TimeService]
 version: @VERSION@
 author: @AUTHOR@
 main: @MAIN@
