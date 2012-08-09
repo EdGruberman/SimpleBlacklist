@@ -21,6 +21,8 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import edgruberman.bukkit.messaging.couriers.ConfigurationCourier;
+import edgruberman.bukkit.messaging.couriers.TimestampedConfigurationCourier;
 import edgruberman.bukkit.simpleblacklist.commands.Reload;
 
 public class Main extends JavaPlugin {
@@ -28,14 +30,14 @@ public class Main extends JavaPlugin {
     static final String PERMISSION_ALL = "simpleblacklist.material.all";
     static final String PERMISSION_MATERIAL = "simpleblacklist.material.%s";
 
-    public static Messenger messenger;
+    public static ConfigurationCourier courier;
 
     private static final Version MINIMUM_CONFIGURATION = new Version("3.0.0");
 
     @Override
     public void onEnable() {
         this.reloadConfig();
-        Main.messenger = Messenger.load(this);
+        Main.courier = new TimestampedConfigurationCourier(this);
 
         final ConfigurationSection section = this.getConfig().getConfigurationSection("blacklist");
 
@@ -59,7 +61,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         HandlerList.unregisterAll(this);
-        Main.messenger = null;
+        Main.courier = null;
     }
 
     @Override
