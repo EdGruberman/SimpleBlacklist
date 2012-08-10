@@ -21,9 +21,9 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import edgruberman.bukkit.messaging.couriers.ConfigurationCourier;
-import edgruberman.bukkit.messaging.couriers.TimestampedConfigurationCourier;
 import edgruberman.bukkit.simpleblacklist.commands.Reload;
+import edgruberman.bukkit.simpleblacklist.messaging.couriers.ConfigurationCourier;
+import edgruberman.bukkit.simpleblacklist.messaging.couriers.TimestampedConfigurationCourier;
 
 public class Main extends JavaPlugin {
 
