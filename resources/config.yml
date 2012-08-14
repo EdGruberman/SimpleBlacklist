@@ -1,6 +1,6 @@
 logLevel: INFO
-denied: '-> You are §cnot approved§r to use §o%1$s' # 1 = Item
-reload: '-> %2$s plugin §areloaded' # 2 = Plugin
+denied: '-> You are §cnot approved§r to use §o{1}' # 1 = Item
+reload: '-> {1} plugin §areloaded' # 1 = Plugin Name
 blacklist:
     TNT: TNT
     FLINT_AND_STEEL: Flint and Steel

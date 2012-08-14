@@ -32,7 +32,7 @@ public class Main extends JavaPlugin {
 
     public static ConfigurationCourier courier;
 
-    private static final Version MINIMUM_CONFIGURATION = new Version("3.0.0");
+    private static final Version MINIMUM_CONFIGURATION = new Version("3.2.0");
 
     @Override
     public void onEnable() {
@@ -124,7 +124,7 @@ public class Main extends JavaPlugin {
             this.getLogger().warning("Log level defaulted to " + level.getName() + "; Unrecognized java.util.logging.Level: " + name);
         }
 
-        // Only set the parent handler lower if necessary, otherwise leave it alone for other configurations that have set it
+        // only set the parent handler lower if necessary, otherwise leave it alone for other configurations that have set it
         for (final Handler h : this.getLogger().getParent().getHandlers())
             if (h.getLevel().intValue() > level.intValue()) h.setLevel(level);
 
