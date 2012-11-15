@@ -1,9 +1,9 @@
-name: @NAME@
+name: SimpleBlacklist
+version: @VERSION@
 description: Prevent specific items from being used
 softdepend: [TimeService]
-version: @VERSION@
-author: @AUTHOR@
-main: @MAIN@
+author: EdGruberman (ed@rjump.com)
+main: edgruberman.bukkit.simpleblacklist.Main
 commands:
     'simpleblacklist:reload':
         description: Reload plugin
