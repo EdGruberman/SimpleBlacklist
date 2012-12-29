@@ -15,7 +15,7 @@ import edgruberman.bukkit.simpletemplate.util.CustomPlugin;
 
 public class Main extends CustomPlugin {
 
-    static final String PERMISSION_ALL = "simpleblacklist.material.all";
+    static final String PERMISSION_ALL = "simpleblacklist.override.material";
     static final String PERMISSION_MATERIAL = "simpleblacklist.material.%s";
 
     public static Courier courier;
