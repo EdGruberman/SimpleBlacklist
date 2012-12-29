@@ -9,7 +9,7 @@ commands:
         description: Reload plugin
         permission: simpleblacklist.reload
 permissions:
-    simpleblacklist.override.material:
+    simpleblacklist.override:
         description: Can use all blacklisted materials
         default: op
     simpleblacklist.reload:

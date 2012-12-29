@@ -3,6 +3,7 @@ package edgruberman.bukkit.simpleblacklist;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -34,9 +35,8 @@ final class BlacklistGuard implements Listener {
     }
 
     private void notify(final Player player, final Material material, final Location location) {
-        this.plugin.getLogger().fine(player.getName() + " attempted to use blacklisted " + material.toString()
-                + " at x:" + location.getBlockX() + " y:" + location.getBlockY() + " z:" + location.getBlockZ());
-
+        this.plugin.getLogger().log(Level.FINE, "{0} attempted to use blacklisted {1} at x:{2} y:{3} z:{4}"
+                , new Object[] { player.getName(), material.toString(), location.getBlockX(), location.getBlockY(), location.getBlockZ() });
         Main.courier.send(player, "denied", this.blacklist.get(material.getId()).description);
     }
 
