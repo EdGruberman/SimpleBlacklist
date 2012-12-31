@@ -6,8 +6,9 @@ author: EdGruberman (ed@rjump.com)
 main: edgruberman.bukkit.simpleblacklist.Main
 commands:
     'simpleblacklist:reload':
-        description: Reload plugin
+        description: Reload SimpleBlacklist plugin
         permission: simpleblacklist.reload
+        usage: '§f-> §7Usage: §b/<command>'
 permissions:
     simpleblacklist.override:
         description: Can use all blacklisted materials
