@@ -1,19 +1,18 @@
 name: SimpleBlacklist
 version: @VERSION@
 description: Prevent specific items from being used
-softdepend: [TimeService]
 author: EdGruberman (ed@rjump.com)
 main: edgruberman.bukkit.simpleblacklist.Main
 commands:
-    'simpleblacklist:reload':
-        description: Reload SimpleBlacklist plugin
-        permission: simpleblacklist.reload
-        usage: '§f-> §7Usage: §b/<command>'
+  'simpleblacklist:reload':
+    description: Reload SimpleBlacklist plugin
+    permission: simpleblacklist.reload
+    usage: '§f-> §7Usage: §b/<command>'
 permissions:
-    simpleblacklist.override:
-        description: Can use all blacklisted materials
-        default: op
-    simpleblacklist.reload:
-        description: Can use reload command
-        default: op
+  simpleblacklist.override:
+    description: Can use all blacklisted materials
+    default: op
+  simpleblacklist.reload:
+    description: Can use reload command
+    default: op
 

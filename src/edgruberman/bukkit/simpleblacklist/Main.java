@@ -9,7 +9,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.HandlerList;
 
 import edgruberman.bukkit.simpleblacklist.commands.Reload;
-import edgruberman.bukkit.simpletemplate.messaging.ConfigurationCourier;
+import edgruberman.bukkit.simpletemplate.messaging.Courier.ConfigurationCourier;
 import edgruberman.bukkit.simpletemplate.util.CustomPlugin;
 
 public class Main extends CustomPlugin {

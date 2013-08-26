@@ -2,10 +2,10 @@ log-level: INFO
 denied: '§f-> §7You are §cnot approved §7to use §f§o{1}' # 1 = Item
 reload: '§f-> §2Reloaded §7{1} plugin' # 1 = Plugin Name
 blacklist:
-    TNT: TNT
-    FLINT_AND_STEEL: Flint and Steel
-    BUCKET: Buckets
-    WATER_BUCKET: Water Buckets
-    LAVA_BUCKET: Lava Buckets
-    FIREBALL: Fire Charges
+  TNT: TNT
+  FLINT_AND_STEEL: Flint and Steel
+  BUCKET: Buckets
+  WATER_BUCKET: Water Buckets
+  LAVA_BUCKET: Lava Buckets
+  FIREBALL: Fire Charges
 version: @VERSION@
