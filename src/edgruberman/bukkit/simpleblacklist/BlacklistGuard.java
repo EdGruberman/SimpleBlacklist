@@ -7,6 +7,7 @@ import java.util.logging.Level;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,6 +39,7 @@ final class BlacklistGuard implements Listener {
         this.plugin.getLogger().log(Level.FINE, "{0} attempted to use blacklisted {1} at x:{2} y:{3} z:{4}"
                 , new Object[] { player.getName(), material.toString(), location.getBlockX(), location.getBlockY(), location.getBlockZ() });
         Main.courier.send(player, "denied", this.blacklist.get(material.getId()).description);
+        player.playSound(player.getLocation(), Sound.ITEM_BREAK, 1.0F, 1.0F);
     }
 
     @EventHandler(ignoreCancelled = true)

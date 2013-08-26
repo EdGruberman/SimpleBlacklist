@@ -20,7 +20,7 @@ public class Main extends CustomPlugin {
     public static ConfigurationCourier courier;
 
     @Override
-    public void onLoad() { this.putConfigMinimum("3.3.1"); }
+    public void onLoad() { this.putConfigMinimum("3.4.0"); }
 
     @Override
     public void onEnable() {
