@@ -1,5 +1,5 @@
 log-level: INFO
-denied: '§f-> §7You are §cnot approved§r to use §o{1}' # 1 = Item
+denied: '§f-> §7You are §cnot approved §7to use §f§o{1}' # 1 = Item
 reload: '§f-> §2Reloaded §7{1} plugin' # 1 = Plugin Name
 blacklist:
     TNT: TNT
