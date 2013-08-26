@@ -30,8 +30,8 @@ public class Main extends CustomPlugin {
         this.reloadConfig();
         Main.courier = ConfigurationCourier.Factory.create(this).build();
 
+        // load blacklist entries
         final ConfigurationSection section = this.getConfig().getConfigurationSection("blacklist");
-
         final List<BlacklistEntry> blacklist = new ArrayList<BlacklistEntry>();
         for (final String name : section.getKeys(false)) {
             final Material material = Material.matchMaterial(name);
@@ -44,12 +44,16 @@ public class Main extends CustomPlugin {
             blacklist.add(new BlacklistEntry(material, description));
 
             // set default for each blacklisted material to false to avoid ops being allowed by default
-            final Permission permission = new Permission(MessageFormat.format(Main.PERMISSION_MATERIAL, material.name()), PermissionDefault.FALSE);
+            final String specific = MessageFormat.format(Main.PERMISSION_MATERIAL, material.name());
+            final Permission permission = new Permission(specific, PermissionDefault.FALSE);
             this.getServer().getPluginManager().addPermission(permission);
         }
 
-        Bukkit.getPluginManager().registerEvents(new BlacklistGuard(this, blacklist), this);
+        // register blacklist guard
+        final BlacklistGuard guard = new BlacklistGuard(this.getLogger(), blacklist);
+        Bukkit.getPluginManager().registerEvents(guard, this);
 
+        // commands
         this.getCommand("simpleblacklist:reload").setExecutor(new Reload(this));
     }
 
