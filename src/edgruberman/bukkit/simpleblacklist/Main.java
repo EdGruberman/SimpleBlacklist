@@ -1,5 +1,6 @@
 package edgruberman.bukkit.simpleblacklist;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.HandlerList;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 
 import edgruberman.bukkit.simpleblacklist.commands.Reload;
 import edgruberman.bukkit.simpletemplate.messaging.Courier.ConfigurationCourier;
@@ -15,7 +18,7 @@ import edgruberman.bukkit.simpletemplate.util.CustomPlugin;
 public class Main extends CustomPlugin {
 
     static final String PERMISSION_ALL = "simpleblacklist.override";
-    static final String PERMISSION_MATERIAL = "simpleblacklist.material.%s";
+    static final String PERMISSION_MATERIAL = "simpleblacklist.material.{0}";
 
     public static ConfigurationCourier courier;
 
@@ -39,6 +42,10 @@ public class Main extends CustomPlugin {
 
             final String description = section.getString(name);
             blacklist.add(new BlacklistEntry(material, description));
+
+            // set default for each blacklisted material to false to avoid ops being allowed by default
+            final Permission permission = new Permission(MessageFormat.format(Main.PERMISSION_MATERIAL, material.name()), PermissionDefault.FALSE);
+            this.getServer().getPluginManager().addPermission(permission);
         }
 
         Bukkit.getPluginManager().registerEvents(new BlacklistGuard(this, blacklist), this);
