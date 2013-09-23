@@ -21,15 +21,15 @@ import org.bukkit.event.player.PlayerInteractEvent;
 final class BlacklistGuard implements Listener {
 
     private final Logger logger;
-    private final Map<Integer, BlacklistEntry> blacklist = new HashMap<Integer, BlacklistEntry>();
+    private final Map<Material, BlacklistEntry> blacklist = new HashMap<Material, BlacklistEntry>();
 
     BlacklistGuard(final Logger logger, final List<BlacklistEntry> blacklist) {
         this.logger = logger;
-        for (final BlacklistEntry entry : blacklist) this.blacklist.put(entry.material.getId(), entry);
+        for (final BlacklistEntry entry : blacklist) this.blacklist.put(entry.material, entry);
     }
 
     private boolean isAllowed(final Player player, final Material material) {
-        final BlacklistEntry entry = this.blacklist.get(material.getId());
+        final BlacklistEntry entry = this.blacklist.get(material);
         if (entry == null) return true;
         return entry.isAllowed(player);
     }
@@ -37,7 +37,7 @@ final class BlacklistGuard implements Listener {
     private void notify(final Player player, final Material material, final Location location) {
         this.logger.log(Level.FINE, "{0} attempted to use blacklisted {1} at x:{2} y:{3} z:{4}"
                 , new Object[] { player.getName(), material.toString(), location.getBlockX(), location.getBlockY(), location.getBlockZ() });
-        Main.courier.send(player, "denied", this.blacklist.get(material.getId()).description);
+        Main.courier.send(player, "denied", this.blacklist.get(material).description);
         player.playSound(player.getLocation(), Sound.ITEM_BREAK, 1.0F, 1.0F);
     }
 
