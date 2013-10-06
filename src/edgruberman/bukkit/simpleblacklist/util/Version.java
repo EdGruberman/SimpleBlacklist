@@ -1,4 +1,4 @@
-package edgruberman.bukkit.simpletemplate.util;
+package edgruberman.bukkit.simpleblacklist.util;
 
 import java.util.ArrayList;
 import java.util.Collection;

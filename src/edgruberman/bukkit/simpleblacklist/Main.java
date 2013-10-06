@@ -12,8 +12,8 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
 import edgruberman.bukkit.simpleblacklist.commands.Reload;
-import edgruberman.bukkit.simpletemplate.messaging.Courier.ConfigurationCourier;
-import edgruberman.bukkit.simpletemplate.util.CustomPlugin;
+import edgruberman.bukkit.simpleblacklist.messaging.Courier.ConfigurationCourier;
+import edgruberman.bukkit.simpleblacklist.util.CustomPlugin;
 
 public class Main extends CustomPlugin {
 

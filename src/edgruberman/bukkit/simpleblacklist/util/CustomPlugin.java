@@ -1,4 +1,4 @@
-package edgruberman.bukkit.simpletemplate.util;
+package edgruberman.bukkit.simpleblacklist.util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
